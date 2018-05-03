@@ -1,6 +1,7 @@
 package servlet;
 
 import bean.FinanceBean;
+import bean.PersonBean;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,10 +31,27 @@ public class FinancialServlet extends HttpServlet {
             DataManager dataManager = new DataManager(finance);
             HttpSession session = request.getSession(true);
             session.setAttribute("sessionFinance", finance);
+            PersonBean person = (PersonBean) session.getAttribute("sessionUser");
+            int earnedInterest = calculateInterest(finance, Integer.parseInt(person.getSalary()));
+            finance.setInterest(earnedInterest);
             response.sendRedirect("ResultPage.jsp");
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
+    }
+
+    private int calculateInterest(FinanceBean finance, int salary) {
+        int deposit = Integer.parseInt(finance.getDeposit());
+        int interestRate = Integer.parseInt(finance.getInterestRate());
+        int duration = Integer.parseInt(finance.getDuration());
+        int taxRate = Integer.parseInt(finance.getTaxRate());
+        int interest = 0;
+        for (int i = 0; i < duration; i++) {
+            interest += (deposit * (interestRate * 0.01f));
+            deposit += interest;
+        }
+        interest -= interest * (taxRate * 0.01f);
+        return interest;
     }
 
     @Override

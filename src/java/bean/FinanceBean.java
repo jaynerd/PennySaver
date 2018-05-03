@@ -13,6 +13,7 @@ public class FinanceBean {
     private String interestRate;
     private String taxRate;
     private String spending;
+    private int interest;
 
     public String getDeposit() {
         return deposit;
@@ -52,5 +53,13 @@ public class FinanceBean {
 
     public void setSpending(String spending) {
         this.spending = spending;
+    }
+
+    public int getInterest() {
+        return interest;
+    }
+
+    public void setInterest(int interest) {
+        this.interest = interest;
     }
 }
