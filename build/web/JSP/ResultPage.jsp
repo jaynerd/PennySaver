@@ -11,5 +11,9 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <form>
+            <input type="submit" value="Solutions">
+            <input type="submit" value="Statistics">
+        </form>
     </body>
 </html>

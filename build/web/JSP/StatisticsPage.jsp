@@ -7,13 +7,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Result Page</title>
+        <title>Statistics Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form>
-            <input type="submit" value="Solutions">
-            <input type="submit" value="Statistics">
-        </form>
+        <h1>Stats!!</h1>
     </body>
 </html>

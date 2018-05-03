@@ -8,6 +8,10 @@
         <servlet-name>FinancialServlet</servlet-name>
         <servlet-class>servlet.FinancialServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <servlet-class>servlet.StatisticsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonalServlet</servlet-name>
         <url-pattern>/JSP/PersonalServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>FinancialServlet</servlet-name>
         <url-pattern>/JSP/FinancialServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <url-pattern>/JSP/StatisticsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
