@@ -24,7 +24,7 @@
             <input class ="addMargin" type="text" name="age"/><br>
             Please enter your annual salary in $:
             <input class ="addMargin" type="text" name="salary"/><br>
-            Please enter your working hours per week:
+            Please enter your regular working hours per week:
             <input class ="addMargin" type="text" name="hours"/><br>
             <input class ="addMargin" type="submit" value="Submit">
         </form>

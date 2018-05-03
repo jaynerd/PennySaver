@@ -3,6 +3,7 @@ package servlet;
 import bean.PersonBean;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import manager.DataManager;
 /**
  * @author Namyoon j4yn3rd@gmail.com
  */
+@WebServlet(name = "PersonalServlet", urlPatterns = {"/PersonalServlet"})
 public class PersonalServlet extends HttpServlet {
 
     @Override

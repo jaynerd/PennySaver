@@ -4,9 +4,17 @@
         <servlet-name>PersonalServlet</servlet-name>
         <servlet-class>servlet.PersonalServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FinancialServlet</servlet-name>
+        <servlet-class>servlet.FinancialServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonalServlet</servlet-name>
         <url-pattern>/JSP/PersonalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinancialServlet</servlet-name>
+        <url-pattern>/JSP/FinancialServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -22,6 +22,19 @@
             <% PersonBean person = ((PersonBean) (session.getAttribute("sessionUser")));%>
             Hello <%=person.getName()%>, please enter your financial details.
         </p>
+        <form class ="addMargin" action="FinancialServlet">
+            Please enter the value of your term deposit in $:
+            <input class ="addMargin" type="text" name="deposit"/><br>
+            How long is the term deposit for? (duration in years):
+            <input class ="addMargin" type="text" name="duration"/> years<br>
+            Please enter the annual interest rate:
+            <input class ="addMargin" type="text" name="intRate"/> %<br>
+            How much is you tax rate?:
+            <input class ="addMargin" type="text" name="taxRate"/> %<br>
+            How much do you spend daily? (an estimated average in $):
+            <input class ="addMargin" type="text" name="spending"/> <br>
+            <input class ="addMargin" type="submit" value="Show Results">
+        </form>
     </center>
 </body>
 </html>

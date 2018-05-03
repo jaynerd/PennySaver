@@ -15,7 +15,7 @@
     <p>savings from any long-term deposits. Keeping a healthy</p>
     <p>financial status is not only about earning, but also can</p>
     <p>be achieved through a well planned financial management.</p>
-    <p>Let's see how much you are saving for a day!</p>
+    <p><strong>Let's see how much you are saving for a day!</strong></p>
     <br>
     <form action="JSP/PersonalInfoPage.jsp">
         <input type="submit" value="proceed">
