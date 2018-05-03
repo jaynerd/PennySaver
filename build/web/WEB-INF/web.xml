@@ -6,7 +6,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>PersonalServlet</servlet-name>
-        <url-pattern>/PersonalServlet</url-pattern>
+        <url-pattern>/JSP/PersonalServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

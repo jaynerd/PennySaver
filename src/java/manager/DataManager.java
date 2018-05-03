@@ -12,16 +12,16 @@ import java.sql.SQLException;
 public class DataManager {
 
     private String tableName = null;
-    private PersonBean personBean;
-    private FinanceBean financeBean;
+    private PersonBean person;
+    private FinanceBean finance;
 
-    public DataManager(PersonBean personBean) {
-        this.personBean = personBean;
+    public DataManager(PersonBean person) {
+        this.person = person;
         connect();
     }
 
     public DataManager(FinanceBean financeBean) {
-        this.financeBean = financeBean;
+        this.finance = finance;
         connect();
     }
 

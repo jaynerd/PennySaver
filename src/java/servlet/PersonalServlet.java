@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import manager.DataManager;
 
 /**
  * @author Namyoon j4yn3rd@gmail.com
@@ -23,15 +24,12 @@ public class PersonalServlet extends HttpServlet {
             person.setSalary(request.getParameter("salary"));
             person.setHours(request.getParameter("hours"));
 
+            DataManager dataManager = new DataManager(person);
             HttpSession session = request.getSession(true);
+            session.setAttribute("sessionUser", person);
+            response.sendRedirect("FinancialInfoPage.jsp");
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
     }
 }
