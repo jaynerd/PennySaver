@@ -2,6 +2,7 @@ package core;
 
 import bean.FinanceBean;
 import bean.PersonBean;
+import bean.StatsBean;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -30,6 +31,7 @@ public class DataManager {
         if (!doesExist) {
             createPersonTable();
         }
+        insertPerson();
     }
 
     public DataManager(FinanceBean finance) {
@@ -40,6 +42,20 @@ public class DataManager {
         if (!doesExist) {
             createFinanceTable();
         }
+        insertFinance();
+    }
+
+    public DataManager(int age, double dailySavings) {
+        tableName = "STATISTICS";
+        connect();
+        boolean doesExist = checkExistingTable();
+        if (!doesExist) {
+            createStatisticsTable();
+        }
+        insertStatistics(age, dailySavings);
+    }
+
+    public DataManager() {
     }
 
     private void connect() {
@@ -65,12 +81,80 @@ public class DataManager {
         try {
             statement = connection.createStatement();
             statement.executeUpdate("CREATE TABLE " + tableName + " (DEPOSIT INT, "
-                    + "DURATION DOUBLE, INTERESTRATE DOUBLE, TAXRATE DOUBLE, SPENDINGS DOUBLE, "
-                    + "EARNEDINTEREST DOUBLE)");
+                    + "DURATION DOUBLE, INTERESTRATE DOUBLE, TAXRATE DOUBLE, SPENDINGS DOUBLE)");
             statement.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void createStatisticsTable() {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("CREATE TABLE " + tableName + " (AGE INT, "
+                    + "DAILYSAVINGS DOUBLE)");
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void insertPerson() {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO PERSON VALUES('" + person.getName() + "', " + person.getAge()
+                    + ", " + person.getSalary() + ", " + person.getWorkHours() + ")");
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void insertFinance() {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO FINANCE VALUES(" + finance.getDeposit() + ", " + finance.getDuration()
+                    + ", " + finance.getInterestRate() + ", " + finance.getTaxRate() + ", " + finance.getSpendings() + ")");
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void insertStatistics(int age, double dailySavings) {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO STATISTICS VALUES(" + age + ", " + dailySavings + ")");
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public ResultSet getAges() {
+        ResultSet ages = null;
+        try {
+            connect();
+            statement = connection.createStatement();
+            ages = statement.executeQuery("SELECT AGE FROM STATISTICS");
+           // statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ages;
+    }
+
+    public ResultSet getSavings() {
+        ResultSet savings = null;
+        try {
+            connect();
+            statement = connection.createStatement();
+            savings = statement.executeQuery("SELECT DAILYSAVINGS FROM STATISTICS");
+            //statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return savings;
     }
 
     private boolean checkExistingTable() {

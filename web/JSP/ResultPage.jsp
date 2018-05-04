@@ -2,6 +2,7 @@
     Author     : Namyoon j4yn3rd@gmail.com
 --%>
 
+<%@page import="bean.StatsBean"%>
 <%@page import="bean.FinanceBean"%>
 <%@page import="bean.PersonBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,6 +22,7 @@
         <%! double workHours = 8;%>
         <%! double dailyIncome = 0;%>
         <%! double dailyInterest = 0;%>
+        <%! double dailySavings = 0;%>
         <h1>Results</h1>
         <% PersonBean person = ((PersonBean) (session.getAttribute("sessionPerson")));%>
         <% FinanceBean finance = ((FinanceBean) (session.getAttribute("sessionFinance")));%>
@@ -28,10 +30,12 @@
         <p>Your hourly rate before tax is <%=String.format("%.2f", (person.getSalary() / workDays / workHours))%> NZD</p>
         <p> After your term deposit gets matured, you will get <%=String.format("%.2f", finance.getEarnedInterest())%> NZD as an interest after tax.</p>
         <p> Therefore, from the term deposit, you will earn <%=String.format("%.2f", (dailyInterest = finance.getEarnedInterest() / (numDays * finance.getDuration())))%> NZD daily.</p>
-        <p> Based on your spending pattern, you will be able to save $<%=String.format("%.2f", (dailyIncome + dailyInterest - finance.getSpendings()))%> daily, salaries included.</p>
-        <form action="StatisticsServlet">
-            <input type="submit" value="Statistics">
-        </form>
-    </center>
-</body>
+        <p> Based on your spending pattern, you will be able to save $<%=String.format("%.2f", (dailySavings = (dailyIncome + dailyInterest - finance.getSpendings())))%> daily, salaries included.</p>
+        <%StatsBean statsBean = new StatsBean();%>
+        <%statsBean.saveStats(person.getAge(), dailySavings);%>
+        <form action = "StatisticsServlet" > 
+            <input type = "submit" value = "Statistics"> 
+        </form> 
+    </center> 
+</body> 
 </html>
