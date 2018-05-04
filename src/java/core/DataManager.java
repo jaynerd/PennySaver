@@ -1,5 +1,6 @@
 package core;
 
+import bean.FinanceBean;
 import bean.PersonBean;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -15,6 +16,7 @@ public class DataManager {
 
     private String tableName;
     private PersonBean person;
+    private FinanceBean finance;
 
     private Statement statement;
     private Connection connection;
@@ -22,11 +24,21 @@ public class DataManager {
 
     public DataManager(PersonBean person) {
         this.person = person;
-        tableName = "Person";
+        tableName = "PERSON";
         connect();
         boolean doesExist = checkExistingTable();
         if (!doesExist) {
             createPersonTable();
+        }
+    }
+
+    public DataManager(FinanceBean finance) {
+        this.finance = finance;
+        tableName = "FINANCE";
+        connect();
+        boolean doesExist = checkExistingTable();
+        if (!doesExist) {
+            createFinanceTable();
         }
     }
 
@@ -42,14 +54,23 @@ public class DataManager {
         try {
             statement = connection.createStatement();
             statement.executeUpdate("CREATE TABLE " + tableName + " (NAME VARCHAR(20), "
-                    + "AGE INT, SALARY INT, HOURS INT)");
+                    + "AGE INT, SALARY INT, WORKHOURS INT)");
             statement.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
-    private void createFinancialTable() {
+    private void createFinanceTable() {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("CREATE TABLE " + tableName + " (DEPOSIT INT, "
+                    + "DURATION DOUBLE, INTERESTRATE DOUBLE, TAXRATE DOUBLE, SPENDINGS DOUBLE, "
+                    + "EARNEDINTEREST DOUBLE)");
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private boolean checkExistingTable() {

@@ -21,10 +21,10 @@
             <input type="text" value="Jaynerd" name="name"/><br>
             Please enter your age:
             <input type="text" value="31" name="age"/><br>
-            Please enter your annual salary: $
-            <input type="text" value="50000" name="salary"/><br>
+            Please enter your annual salary:
+            <input type="text" value="50000" name="salary"/> NZD<br>
             Please enter your regular weekly working hours:
-            <input type="text" value="42" name="whours"/><br>
+            <input type="text" value="42" name="whours"/> hours<br>
             <input type="submit" value="Next"/>
         </form>
     </body>

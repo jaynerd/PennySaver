@@ -4,9 +4,25 @@
         <servlet-name>PersonalInfoServlet</servlet-name>
         <servlet-class>servlet.PersonalInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FinancialInfoServlet</servlet-name>
+        <servlet-class>servlet.FinancialInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <servlet-class>servlet.StatisticsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonalInfoServlet</servlet-name>
         <url-pattern>/JSP/PersonalInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinancialInfoServlet</servlet-name>
+        <url-pattern>/JSP/FinancialInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <url-pattern>/JSP/StatisticsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
